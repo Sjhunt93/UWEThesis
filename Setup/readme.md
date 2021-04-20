@@ -10,6 +10,9 @@ Front page of the thesis.
 
 Summary of the thesis, this comes just after the title page.
 
+### acknowledgements
+
+A good place to thank people/supervisors/examiners.
 
 ### declarations
 
@@ -27,3 +30,7 @@ Use
   // for citing (authors, Date)
   \citep{}
 ```
+
+### style
+
+This configures the style of the document, so things like fonts and spacing.
