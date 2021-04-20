@@ -4,11 +4,11 @@ This folder contains various files for configuring the overall thesis.
 
 ### title
 
-Front page of the thesis
+Front page of the thesis.
 
 ### abstract
 
-Summary of the thesis comes just after the title page
+Summary of the thesis, this comes just after the title page.
 
 
 ### declarations
@@ -21,9 +21,11 @@ UWE harvard reference generator.
 
 Use
 
-.cpp {
+```cpp
+{
   // for citing authors (Date)
   \citet{}
   // for citing (authors, Date)
   \citep{}
 }
+```
