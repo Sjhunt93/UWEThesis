@@ -1,12 +1,5 @@
 # UWE Thesis
 
-## Building
+Welcome to this \LaTeX{} thesis template. This template was originally created by the fabulous Dr Dom Brown, and updated by the amazing but not-quite-Dr Samuel Hunt. This template assumes you already know the basics of \LaTeX{}.
 
-To build the thesis use:
-
-1. XeLaTex
-2. bibtex
-3. XeLaTex
-4. XeLaTex
-
-You can then just use XeLaTex to rebuild the thesis, however references, figures numbers and the such wont get updated unless you do the full 4-step process.
+Jump into Chapters/Intro.tex for an in-depth description of how to use this template.
