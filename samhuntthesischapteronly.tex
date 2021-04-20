@@ -1,0 +1,296 @@
+% arara: pdflatex: {synctex:on}
+% arara: biber
+	% arara: pdflatex: {synctex:on}
+% arara: pdflatex: {synctex:on}
+
+\input{Setup/style}
+\input{Setup/uweharvard}
+%\addbibresource{/Users/samuelhunt/Google Drive/my PHD References.bib}
+\addbibresource{../References.bib }
+
+
+\usepackage{pgfplots}
+\usepackage{pdfpages} 
+\usepackage{adjustbox}
+\usepackage{changepage}   % for the adjustwidth environment
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}	
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+
+
+
+%readint list (bleeding edge)
+%	https://ijicis.journals.ekb.eg/article_156586_a45730bfbcec74f268b8e6fd2d1f769d.pdf
+
+
+%\usepackage[toc,page]{appendix}
+
+
+\begin{document}
+\input{Setup/title}
+
+\input{Setup/abstract}
+\input{Setup/acknowledgements}
+\input{Setup/declarations}
+%\input{Setup/foreword}
+
+\frontmatter
+
+\tableofcontents
+\printnoidxglossaries
+%\listoffigures
+%\listoftables
+
+
+
+\mainmatter
+
+
+\iffalse
+%\iftrue
+
+
+%------------------------------------------------------------------------------------
+% setup
+
+%------------------------------------------------------------------------------------
+
+
+
+\part{INTRODUCTION}
+%\thispagestyle{empty}
+\input{Chapters/Intro}
+
+%------------------------------------------------------------------------------------
+% research
+%------------------------------------------------------------------------------------
+
+
+\part{BACKGROUND} 
+%[\textit{The question of whether computers will ever be `creative' in the sense that we speak of creative composing is rather similar to the problem of whether they `think'. Also, we might ask: ``What is meant by the term creative?'' Being `creative' would seem to depend at the very minimum, like `thinking,' on having a computer operate on a self-sustaining basis, and to `learn from experience.' If we postulate, therefore, that creative actions involve, at the very least, a unique perception of relationships between apparently disassociated events in such a way that a new truth is disclosed, then creativity seems to be bound up with the question of ignorance. Moreover, it seems that what we first consider strokes of insight and manifestations of ``creative thought'' are, once they are analyzed and codified and, particularly, codified to the extent that they can be processed by a computer, no longer ``creative processes'' in the usual sense. Seen in this light, the pursuit of knowledge which depends on ``creative thought" is a technique of coding, of finding explicit statements of more and more complex logical relationships. If `creativity' is defined in such terms, then the question of whether machines can do this type of coding is the one which has to be answered. The present computers, even though they may be programmed to process problems in music, for example, cannot be expected to seek out new musical principles. These now must be fed to the machine in explicit detail, and, at best, the uncertainty introduced by freedom of choice, i.e., the use of the random-number processes which we have applied to produce computer music, perhaps gives a computer a very primitive sort of unpredictability, but this can hardly be equated to any sort of creative process.} - \citet{hiller1959experimental}]
+
+\input{Chapters/Research/HCIandCreativity}
+\input{Chapters/Research/backgroundGenerativeTechniques}
+\input{Chapters/Research/backgroundGenerativeSystems}
+
+%------------------------------------------------------------------------------------
+% development
+%------------------------------------------------------------------------------------
+
+\part{DEVELOPMENT}
+\input{Chapters/Development/designRequirements}
+\input{Chapters/Development/IGMESystemDescription}
+
+%------------------------------------------------------------------------------------
+% Empical evaluation
+%------------------------------------------------------------------------------------
+
+ 
+\part{EVALUATION}
+
+\input{Chapters/Evaluation/methodologies}
+\input{Chapters/Development/IGMECognitive}
+
+\input{Chapters/Evaluation/nime2020paper}
+\input{Chapters/Evaluation/LongitudinalStudy}
+
+%------------------------------------------------------------------------------------
+% Conclusion
+%------------------------------------------------------------------------------------
+
+\part{CONCLUSION}
+\input{Chapters/Evaluation/Conclusion}
+		
+\fi
+
+%------------------------------------------------------------------------------------
+% working chapter
+%------------------------------------------------------------------------------------
+
+%\input{Chapters/Evaluation/LongitudinalStudy}
+
+\input{Chapters/Intro}
+
+%\input{Chapters/appendix/UserSurvey.tex}
+%\input{Chapters/Evaluation/Conclusion}
+
+%NIME 2020
+% longditudal study
+% conclusion
+
+
+
+% one could ask waht not only store the seed and generative model. this only works for techniques listed as repoducible (figure \#). However for stochastics systems the output will be different for the same input and generative model, so therefore all three most be considered.
+
+
+\backmatter
+%bibliography
+\raggedright
+%\onehalfspacing
+
+%\nocite{*}
+\printbibliography
+
+\justify
+
+
+\part{APPENDICES}
+
+\iffalse
+%\iftrue
+
+\chapter{Summary}
+
+\subsubsection{A: Music Practitioner Questionnaire}
+Discusses the results of a user survey given to music practitioners. Summarised in chapter 5, but discussed at length here. 
+
+\subsubsection{B: Surveys}
+Copies of the 3 surveys used in the user studies discussed in chapters 7, 9 and 10.
+
+\subsubsection{C: Existing Music Software Plug-in Summary}
+An extension of the work summarised in chapter 4. This section discusses the range of computer-generated plug-ins and processes already in common music software in detail.
+
+\subsubsection{D: IGME System Documentation}
+Details all of the computer-generated processes within IGME.
+
+\subsubsection{E: Additional Figures}
+Additional figures excluded from the main body.
+
+\subsubsection{F: Additional Publications}
+Publications produced as part of doing this PhD that are not discussed in the main body.
+
+\appendix
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\chapter{A: Music Practitioner Questionnaire}
+
+%\chapter{Discussions With Composers}
+\label{app:composerSurvey}
+\input{Chapters/appendix/UserSurvey.tex}
+\section{Survey}
+Listed on the next page is the survey given to participants for the work discussed in this chapter.
+\includepdf[pages=-,nup=1x2,landscape=true]{Chapters/appendix/SurveyD.pdf}
+
+
+%\chapter{Appendix Item B: Automating Algorithmic Representations of Musical Structure}
+%
+%\chapter{Automating Algorithmic Representations of Musical Structure}
+%\label{app:igmeAlgo}
+%\input{Chapters/Evaluation/algorithmicRepresentations.tex}
+
+
+
+\chapter{B: Surveys}
+\label{app:survey}
+\section{Survey A: Preliminary Evaluation}
+\includepdf[pages=-,nup=1x2,landscape=true]{Chapters/appendix/SurveyA.pdf}
+\section{Survey B-3: Cognitive Dimensions Evaluation}
+\includepdf[pages=-,nup=1x2,landscape=true]{Chapters/appendix/SurveyB3.pdf}
+\section{Survey C: Prior Experiences of Music}
+\includepdf[pages=-,nup=1x2,landscape=true]{Chapters/appendix/SurveyC.pdf}
+
+\chapter{C: Existing Music Software Plug-in Summary}
+\label{app:pluginsum}
+\input{Chapters/appendix/AddionalPlugins.tex}
+
+\chapter{D: IGME System Documentation}
+\label{app:igme}
+\input{Chapters/appendix/IGMEPlugins.tex}
+
+\chapter{E: Additional Figures}
+\label{app:extrafig}
+\input{Chapters/appendix/extraFigures.tex}
+%
+\chapter{F: Additional Publications}
+\label{app:conference}
+
+%The following papers are included as a separate zip folder.
+%\iffalse
+\section{Tenor 2017: How Can Music Visualisation Techniques Reveal Different Perspectives on Musical Structure}
+%\includepdf[pages=-,nup=1x2,landscape=true]{Papers/carbon/TENOR2017.pdf}
+\includepdf[pages=-]{Papers/carbon/TENOR2017.pdf}
+
+\section{InMusic 19: Automating Algorithmic Representations of Musical Structure Using IGME: The Interactive Generative Music Environment}
+\includepdf[pages=-]{Papers/carbon/inmusic19.pdf}
+%\includepdf[pages=-,nup=1x2,landscape=true]{Papers/carbon/inmusic19.pdf}
+
+\section{Audio Mostly 2020: Exploring Polyrhythms, Polymeters, and Polytempi With the Universal Grid Sequencer Framework}
+\includepdf[pages=-]{Papers/carbon/AM2020.pdf}
+%\includepdf[pages=-,nup=1x2,landscape=true]{Papers/carbon/AM2020.pdf}
+
+\section{CSMC 2020: An Analysis of Repetition in Video Game Music}
+%\includepdf[pages=-,nup=1x2,landscape=true]{Papers/carbon/CSMC2020.pdf}
+\includepdf[pages=-]{Papers/carbon/CSMC2020.pdf}
+
+%\iftrue
+%\section{Tenor 2017: How Can Music Visualisation Techniques Reveal Different Perspectives on Musical Structure}
+%\includepdf[pages=-]{Papers/carbon/TENOR2017.pdf}
+%
+%\section{InMusic 19: Automating Algorithmic Representations of Musical Structure Using IGME: The Interactive Generative Music Environment}
+%\includepdf[pages=-]{Papers/carbon/inmusic19.pdf}
+%\asfjasf
+%\section{Audio Mostly 2020: Exploring Polyrhythms, Polymeters, and Polytempi With the Universal Grid Sequencer Framework}
+%\includepdf[pages=-]{Papers/carbon/AM2020.pdf}
+%
+%\section{CSMC 2020: An Analysis of Repetition in Video Game Music}
+%\includepdf[pages=-]{Papers/carbon/CSMC2020.pdf}
+%
+%
+%\fi % finish if for conference papers
+
+
+\fi
+
+
+
+%\section{User Survey}
+%\input{Chapters/UserSurvey}
+
+%\end{appendices}
+
+
+
+% this is all from doms..
+%\appendix
+%%\input{Appendices/novice-appendix}
+%%\raggedright
+%\chapter{Glover Instructions}
+%\label{app:gloverinstructions}
+%%\includepdf[pages=-]{Appendices/instructions.pdf}
+%\input{Appendices/GloverInstructions/instructionsContent.tex}
+%
+%
+%\begin{comment}
+%\chapter{Publications}
+%
+%As per academic regulations, the publications that contain material presented in this dissertation are included in this appendix.
+%\\
+%\fullcite{nime:2017}
+%\\
+%\fullcite{moco:2018}
+%\\
+%\fullcite{digitalcreativity:2018}
+%
+%\includepdf[pages=-]{Publications/NIME2017_UX.pdf}
+%\includepdf[pages=-]{Publications/MOCO-2018-FINAL.pdf}
+%\includepdf[pages=2-21]{Publications/DigitalCreativity2018.pdf}
+%\end{comment}
+%%TC:endignore
+
+
+
+\pagebreak
+
+%\includepdf[page=-]{Papers/carbon/TENOR2017.pdf}
+
+%\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+\end{document}
+
+% audio
+% Guns N’ Roses. (1987), [CD], Appetite for destruction, Universal Music.
+% Mitsuda, Yasunori. (1995), [video game music], secret of the forest, Square.

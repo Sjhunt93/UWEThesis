@@ -1,0 +1,230 @@
+%	UWE Harvard BibLaTeX formatting
+%
+%	To use this formatting, store this file in your tex documents 
+%	directory and include \input{uweharvard} in the preamble, and use \addbibresource{•} and \printbibliography in your document.
+%
+%   Make sure to run biber instead of bibtex.
+%	In texmaker, go to Preferences -> Commands, change the Bib(la)tex field from "bibtex" % to "biber" %
+%
+%	Use the \citep{} and \citet{} cite commands
+%	\citep{} does name first then date in brackets
+%	\citet{} does name and date in brackets.
+%	This is incomplete, but formats webpages, articles, 
+%	books, theses, incollections and inproceedings correctly. 
+%	Feel free to add more!
+%
+\usepackage[natbib = true,
+			sorting=nyt,
+			citestyle = authoryear,
+			bibstyle = authoryear,
+			maxcitenames = 3, 
+			mincitenames = 1,
+			maxbibnames = 99,
+			uniquename = false,
+			uniquelist = false,
+			firstinits = true,
+			backend = biber,
+			date = long
+			]
+			{biblatex}
+
+\defbibenvironment{bibliography}
+{\list
+	{}
+	{\setlength{\leftmargin}{\bibhang}%
+	\setlength{\itemindent}{-\leftmargin}%
+	\setlength{\itemsep}{\bibitemsep}%
+	\setlength{\parsep}{\bibparsep}}}
+	{\endlist}
+	{\item}
+	
+\newbibmacro*{begentry}{}
+\newbibmacro*{finentry}{\adddot}
+
+\DefineBibliographyStrings{english}{%
+    andothers = {\em et\addabbrvspace al\adddot}
+}
+
+%\DeclareBibliographyDriver{}{%
+%	\usebibmacro{begentry}
+%	
+%	\usebibmacro{finentry}
+%}
+
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		\map{
+			\pertype{inbook}
+			\step[fieldsource=bookyear,fieldtarget=note]		
+		}	
+	}
+}
+
+\DeclareFieldFormat{edition}%
+                   {\ifinteger{#1}%
+                    {\ifnumequal{#1}{1}
+                    {}
+                    {\mkbibordedition{#1}\addthinspace{}ed.}}%
+                    {#1\isdot}}
+                    
+\DeclareNameAlias{sortname}{last-first}
+\DeclareFieldFormat[book,article,inproceedings,thesis,incollection,webpage,inbook]{year}{\mkbibparens{#1}}
+\DeclareFieldFormat[inbook]{note}{\mkbibparens{#1}}
+\DeclareFieldFormat[thesis]{title}{\emph{#1}}
+\DeclareFieldFormat[inproceedings,article,incollection]{title}{#1}
+\DeclareFieldFormat[inproceedings, incollection]{booktitle}{\printtext{In:}\addspace\emph{#1}}
+\DeclareFieldFormat[inbook]{title}{\emph{#1}}
+\DeclareFieldFormat{chapter}{#1}
+\DeclareFieldFormat[article]{journaltitle}{\emph{#1}}
+\DeclareFieldFormat[webpage]{title}{\emph{#1}}
+\DeclareFieldFormat[webpage]{url}{\printtext{Available From:}\addspace\url{#1}}
+%\DeclareFieldFormat[webpage]{lastchecked}{\mkbibbrackets{Last Accessed: #1}}
+\DeclareFieldFormat[webpage]{lastchecked}{\mkbibbrackets{#1}}
+\DeclareFieldFormat[webpage]{note}{\mkbibbrackets{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+\DeclareFieldFormat{language}{\printtext{Translated from }\addspace{#1}}
+\DeclareFieldFormat{translator}{\printtext{by }\addspace{#1}}
+
+
+\DefineBibliographyStrings{english}{%
+	page={\printtext{p.}},
+	pages={\printtext{pp.}},
+}
+
+
+\DeclareBibliographyDriver{webpage}{%
+	\usebibmacro{begentry}
+	\printnames{author}
+	\newunit
+	\printlist{organization}
+	\setunit*{\addspace}\newblock
+	\printfield{year}
+	\setunit*{\addspace}
+	\printfield{title}
+	\newunit\newblock
+	\printfield{url}
+	\setunit*{\addspace}\newblock
+	\printfield{note}
+	\printfield{lastchecked}
+%	\printfield{Date-Added}
+	\usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{inbook}{%
+	\usebibmacro{begentry}
+	\printnames{author}
+	\newunit
+	\printfield{year}
+	\setunit*{\addspace}\newblock
+	\printfield{chapter}
+	\newunit\newblock
+	\printtext{In:}\addspace
+	\printnames{editor}
+	\newunit
+	\printfield{note}
+	\setunit*{\addspace}
+	\printfield{title}
+	\newunit\newblock
+	\printlist{location}
+	\setunit*{\addcolon\addspace}
+	\printlist{publisher}
+	\newunit
+	\printfield{pages}
+	\usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{incollection}{%
+	\usebibmacro{begentry}
+	\printnames{author}%
+	\newunit
+	\printfield{year}%
+	\setunit*{\addspace}
+	\printfield{title}
+	\newunit\newblock
+	\printfield{booktitle}
+	\newunit\newblock
+	\printfield{pages}
+	\newunit\newblock
+	\printlist{location}
+	\setunit*{\addcolon\addspace}
+	\printlist{publisher}
+	\usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{thesis}{%
+	\usebibmacro{begentry}
+	\printnames{author}%
+	\newunit
+	\printfield{year}%
+	\setunit*{\addspace}
+	\printfield{title}
+	\newunit
+	\printfield{type}
+	\setunit*{\addcomma\addspace}
+	\printlist{institution}
+	\usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{article}{%
+	\usebibmacro{begentry}
+	\printnames{author}%
+	\newunit
+	\printfield{year}%
+	\setunit*{\addspace}
+	\newblock
+	\printfield{title}%
+	\newunit\newblock
+	\printfield{journaltitle}%
+	\newunit
+	\printfield{volume}%
+	\setunit*{\addspace}
+	\printfield{number}%
+	\setunit*{\addcomma\addspace}
+	\printfield{pages}%
+	\usebibmacro{finentry}	
+}
+
+\DeclareBibliographyDriver{book}{%
+	\usebibmacro{begentry}
+	\printnames{author}%
+	\newunit
+	\printfield{year}%
+	\setunit*{\addspace}
+	\newblock
+	\printfield{title}%
+	\newunit\newblock
+	%\printlist{language}%
+	%\printfield{translator}%
+	%\newunit\newblock
+	\printfield{edition}
+	\newunit
+	\printlist{location}%
+	\setunit*{\addcolon\addspace}
+	\printlist{publisher}%
+	\usebibmacro{finentry}}
+	
+\DeclareBibliographyDriver{inproceedings}{%
+	\usebibmacro{begentry}
+	\printnames{author}%
+	\newunit
+	\printfield{year}%
+	\setunit*{\addspace}\newblock
+	\printfield{title}%
+	\newunit\newblock
+	\printnames{editor}%
+	\newunit\newblock
+	\printfield{booktitle}%
+	\newunit\newblock
+	\printlist{location}%
+	\setunit*{\addcomma\addspace}
+	\printfield{day}%
+	\setunit*{\addspace}
+	\printfield{month}
+	\setunit*{\addspace}
+	\printfield{labelyear}%
+	\newunit
+	\printlist{publisher}%
+	\newunit\newblock
+	\printfield{pages}
+	\usebibmacro{finentry}}

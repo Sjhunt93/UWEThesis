@@ -1,0 +1,94 @@
+
+
+\input{Setup/style}
+\input{Setup/uweharvard}
+
+\addbibresource{references.bib }
+
+
+% Ok so these are all the packages I used for my thesis....
+\usepackage{pgfplots}
+\usepackage{pdfpages} 
+\usepackage{adjustbox}
+\usepackage{changepage}   
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}	
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+
+
+
+
+\begin{document}
+\frontmatter
+
+\input{Setup/title}
+
+\input{Setup/abstract}
+\input{Setup/acknowledgements}
+\input{Setup/declarations}
+
+
+\tableofcontents
+\printnoidxglossaries
+\listoffigures
+\listoftables
+
+
+\mainmatter
+
+\part{INTRODUCTION}
+\input{Chapters/Intro}
+
+
+\part{CONCLUSION}
+\input{Chapters/Evaluation/Conclusion}
+		
+		
+\backmatter
+\raggedright
+
+
+\printbibliography
+
+\justify
+
+
+\part{APPENDICES}
+
+% you can toggle these to dynamically enable to the appendix 
+%\iffalse
+\iftrue
+
+\chapter{Summary}
+
+You might want to add a summary of your appendix here.
+
+\appendix
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\chapter{A: Some extra chapter}
+
+
+\input{Chapters/appendix/extraFigures.tex}
+
+
+\chapter{F: Additional Publications}
+
+% examples of how to include a pdf.
+
+\section{My publication 1}
+\includepdf[pages=-]{Papers/NIME2020.pdf}
+
+\fi %see line 65
+
+
+\pagebreak
+
+
+\end{document}
+
