@@ -15,9 +15,9 @@ Summary of the thesis, this comes just after the title page.
 
 Declare anything here that is required by the grad school. i.e. publications, colloborations. See Papers/readme for how to include papers as PDFs.
 
-### UWE harvard
+### uweharvard
 
-UWE harvard reference generator.
+This file automatically generates UWE harvard references/citations and builds the bibliography list for you!
 
 Use
 
