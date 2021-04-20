@@ -22,10 +22,8 @@ UWE harvard reference generator.
 Use
 
 ```cpp
-{
   // for citing authors (Date)
   \citet{}
   // for citing (authors, Date)
   \citep{}
-}
 ```
